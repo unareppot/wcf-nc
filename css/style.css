@@ -243,8 +243,10 @@ a:focus {
     position: relative;
     transition: .5s;
     z-index: 999;
+    background: #59220d !important; /* Ensure the background color is brown by default */
 }
 
+/* Navbar sticky state */
 .navbar.nav-sticky {
     position: fixed;
     top: 0;
@@ -288,8 +290,6 @@ a:focus {
     max-height: 40px;
 }
 
-
-
 /* Default state: White color */
 .navbar-dark .navbar-nav .nav-link,
 .navbar-dark .navbar-nav .nav-link:focus {
@@ -308,47 +308,73 @@ a:focus {
     color: #ffffff; /* Keep it white when active (no hover) */
 }
 
-
-
+/* Dropdown menu */
 .navbar .dropdown-menu {
     margin-top: 0;
     border: 0;
     border-radius: 0;
-    background: #71eb34;
+    background: #59220d; /* Brown background */
 }
 
+/* Navbar button */
+.navbar .btn {
+    background-color: #59220d; /* Default background color */
+    color: white; /* Text color */
+    border: 1px solid transparent; /* Transparent border initially */
+    transition: background-color 0.3s ease, border 0.3s ease; /* Smooth transition for background and border */
+}
+
+.navbar .btn:hover,
+.navbar .btn.active {
+    background-color: #ffffff; /* White background on hover */
+    color: #59220d; /* Text color turns to match the default background color */
+    border: 1px solid #59220d; /* Border color changes to match the default background */
+    box-shadow: inset 0 0 0 30px #ffffff; /* White inner glow */
+}
+
+/* Navbar background image */
 @media (min-width: 992px) {
     .navbar {
         position: absolute;
         width: 100%;
         top: 45px;
         padding: 20px 60px;
-        background: #59220d !important;
-        border-bottom: 1px solid rgba(255, 255, 255, .3);
         z-index: 9;
+        border-bottom: 1px solid rgba(255, 255, 255, .3);
+        background: #59220d !important; /* Ensure navbar stays brown on larger screens */
     }
-    
-    .navbar.nav-sticky {
-        padding: 10px 60px;
-        background: #59220d !important;
-        border-bottom: none;
-    }
-    
-    .page .navbar {
-        background: #59220d !important;
-    }
-    
-    .navbar a.nav-link {
-        padding: 8px 15px;
-        font-size: 16px;
-        letter-spacing: 1px;
+
+    .navbar::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url(../img/navbar-banner.jpg); /* Background image */
+        background-size: cover;
+        background-position: center;
+        filter: blur(0px); /* Add some blur to the background */
+        z-index: -1; /* Make sure the background stays behind content */
     }
 }
 
+.navbar.nav-sticky {
+    padding: 10px 60px;
+    background: #59220d !important; /* Sticky navbar keeps brown background */
+    border-bottom: none;
+}
+
+/* Navbar on page load */
+.page .navbar {
+    background: #59220d !important; /* Keep navbar brown */
+}
+
+/* Navbar on smaller screens */
 @media (max-width: 991.98px) {   
     .navbar {
         padding: 15px;
-        background: #59220d !important;
+        background: #59220d !important; /* Ensure the background remains brown on small screens */
     }
     
     .navbar a.nav-link {
@@ -357,8 +383,10 @@ a:focus {
     
     .navbar .dropdown-menu {
         box-shadow: none;
+        background-color: #59220d !important; /* Make sure dropdown stays brown */
     }
 }
+
 
 
 /*******************************/
